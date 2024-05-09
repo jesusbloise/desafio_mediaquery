@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+    --bg: #0F0F0F;
+    --primary: #008170;
+    --border: #ccc;
+    --text: #000;
+    --white: #fff;
+    --font: "Open Sans", sans-serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    color: var(--text);
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+#root {
+    display: grid;
+    grid-template-columns:100%;
+    grid-template-areas: 
+        'nav'
+        'header'
+        'related'
+        'article'
+        'footer'
+    ;
+}
+/*menu*/
+.main-menu {
+    position: relative;
+    height: 100%;
+    background:var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    grid-area: nav;
+}
+
+.main-menu .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#hamburguesa {
+    color: var(--white);
+}
+.main-menu a {
+    color: #fff;
+}
+
+.main-menu a:hover {
+    color: var(--primary);
+}
+
+.main-menu ul {
+    list-style: none;
+    display: none;
+    gap: 1rem;
+}
+/*selector*/
+header {
+    background-color: rgb(190, 187, 187);
+    background-position: center 60%;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+    margin-bottom: 2rem;
+    grid-area: header;
+}
+
+header p {
+    font-size: 1.25rem;
+}
+select {
+    padding: 0 15px;
+    font-size: 20px;
+}
+
+/*galeria*/
+section {
+    grid-area: related;
+    min-height: calc(100vh - 338px);
+}
+.related-posts {
+    /* padding: 3rem 2rem; */
+    grid-area: related;
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 65vh;
+    overflow-y: scroll;
+    gap: 1rem;
+}
+
+.related-posts .card {
+    padding: 5px;
+    text-align: center;
+}
+
+.related-posts .card a {
+    color: var(--text);
+}
+.related-posts .card h3 {
+    padding: 5px;
+}
+.related-posts .card h3:hover {
+    color:var(--text);
+    object-fit: cover;
+}
+
+.related-posts .card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+.related-posts .card button {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 15px;
+}
+article {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    grid-area: article;
+}
+
+article button {
+    background-color: var(--white);
+    color: var(--primary);
+    font-size: 20px;
+    margin: 5px;
+    padding: 10px;
+    font-family: var(--font);
+}
+
+/*footer*/
+footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: var(--primary);
+    color: var(--white);
+    padding: 2rem;
+}
+.info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.icon {
+    font-size: 20px;
+}
+
+@media (min-width: 576px) {
+    #root {
+        display: grid;
+        grid-template-columns: 20% 80%;
+        grid-template-rows: 1fr 5fr;
+        grid-template-areas: 
+            'nav header'
+            'nav related'
+            'footer article'
+        ;
+    }
+    .main-menu {
+        display: flex;
+        justify-content: start;
+       flex-direction: column;
+        grid-area: nav;
+    }
+    .main-menu ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+    }
+    #hamburguesa {
+        display: none;
+        color: var(--white);
+    }
+    .related-posts {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+    article {
+        display: flex;
+        grid-area: article;
+    }
+    footer {
+        grid-area: footer;
+        display: flex; 
+    }
+}
